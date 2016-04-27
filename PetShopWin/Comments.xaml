@@ -1,0 +1,24 @@
+﻿<Page x:Class="PetShopWin.Comments"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PetShopWin"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="500"
+      Title="Comments">
+
+    <Grid>
+        <StackPanel>
+            <Label x:Name="commentsLabel" Content="comments" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="18"/>
+            <DataGrid x:Name="commentsGrid" ItemsSource="{Binding}" Height="400" Margin="10" AutoGenerateColumns="False" ColumnWidth="*" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="cID" Binding="{Binding CommentId, Mode=OneWay, UpdateSourceTrigger=LostFocus}" Header="ID" />
+                    <DataGridTextColumn x:Name="cName" Binding="{Binding AnimalId, Mode=OneWay, UpdateSourceTrigger=LostFocus}" Header="Animal Id" />
+                    <DataGridTextColumn x:Name="cComment" Binding="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Header="Comment" />
+                </DataGrid.Columns>
+            </DataGrid>
+            
+        </StackPanel>
+    </Grid>
+</Page>

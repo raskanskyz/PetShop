@@ -1,0 +1,19 @@
+﻿<Window x:Class="PetShopWin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PetShopWin"
+        mc:Ignorable="d"
+        Title="ShopKeeper's Console" ResizeMode="NoResize" Background="#FF266D95">
+    <Grid>
+        <StackPanel Orientation="Horizontal" Height="35" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="2">
+            <Button Content="main" MinWidth="75" Margin="0, 0, 0, 0" Click="NavMain"/>
+            <Button Content="animals" MinWidth="75" Margin="10, 0, 0, 0" Click="NavAnimals"/>
+            <Button Content="categories" MinWidth="75" Margin="10, 0, 0, 0" Click="NavCategories"/>
+            <Button Content="comments" MinWidth="75" Margin="10, 0, 0, 0" Click="NavComments"/>
+            <Button Content="ratings" MinWidth="75" Margin="10, 0, 0, 0" Click="NavRatings"/>
+        </StackPanel>
+        <Frame x:Name="Main" Margin="0, 0, 0, 35" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

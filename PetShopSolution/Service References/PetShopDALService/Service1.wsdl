@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:60070/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:60070/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:60070/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PetShopDAL" />
+      <xsd:import schemaLocation="http://localhost:60070/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:60070/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PetShopSolution.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetCommentsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCommentsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCategoryEntities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryEntities" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCategoryEntities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryEntitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertAnimal_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAnimal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertAnimal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAnimalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AnimalsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:AnimalsList" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AnimalsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AnimalsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnimalsOrderedByCommentCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnimalsOrderedByCommentCount" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnimalsOrderedByCommentCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnimalsOrderedByCommentCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAnimal_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnimal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateAnimal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnimalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCategory" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InsertCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCommentsOfAnimal_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsOfAnimal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCommentsOfAnimal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsOfAnimalResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetCommentsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCommentsList" message="tns:IService1_GetCommentsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCommentsListResponse" message="tns:IService1_GetCommentsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryEntities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCategoryEntities" message="tns:IService1_GetCategoryEntities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCategoryEntitiesResponse" message="tns:IService1_GetCategoryEntities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnimal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertAnimal" message="tns:IService1_InsertAnimal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertAnimalResponse" message="tns:IService1_InsertAnimal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCategories" message="tns:IService1_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCategoriesResponse" message="tns:IService1_GetCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AnimalsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AnimalsList" message="tns:IService1_AnimalsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AnimalsListResponse" message="tns:IService1_AnimalsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalsOrderedByCommentCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnimalsOrderedByCommentCount" message="tns:IService1_GetAnimalsOrderedByCommentCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnimalsOrderedByCommentCountResponse" message="tns:IService1_GetAnimalsOrderedByCommentCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnimal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateAnimal" message="tns:IService1_UpdateAnimal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateAnimalResponse" message="tns:IService1_UpdateAnimal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InsertCategory" message="tns:IService1_InsertCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InsertCategoryResponse" message="tns:IService1_InsertCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsOfAnimal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCommentsOfAnimal" message="tns:IService1_GetCommentsOfAnimal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCommentsOfAnimalResponse" message="tns:IService1_GetCommentsOfAnimal_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCommentsList">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCommentsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryEntities">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCategoryEntities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnimal">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertAnimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnimalsList">
+      <soap:operation soapAction="http://tempuri.org/IService1/AnimalsList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalsOrderedByCommentCount">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAnimalsOrderedByCommentCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnimal">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateAnimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCategory">
+      <soap:operation soapAction="http://tempuri.org/IService1/InsertCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsOfAnimal">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCommentsOfAnimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://localhost:60070/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,22 @@
+﻿<Page x:Class="PetShopWin.Ratings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PetShopWin"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="500"
+      Title="Ratings">
+    <Grid>
+        <StackPanel>
+            <Label x:Name="ratingsLabel" Content="ratings" HorizontalAlignment="Center" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="18"/>
+            <DataGrid x:Name="ratingsGrid" Height="400" Margin="10" AutoGenerateColumns="False" ColumnWidth="*" CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="cID" Binding="{Binding Path=Animal.AnimalId, Mode=OneWay, UpdateSourceTrigger=LostFocus}" Header="Animal Id" />
+                    <DataGridTextColumn x:Name="cName" Binding="{Binding Path=Animal.Name, Mode=OneWay, UpdateSourceTrigger=LostFocus}" Header="Animal Name" />
+                    <DataGridTextColumn x:Name="cComment" Binding="{Binding Path=CommentCount, Mode=OneWay, UpdateSourceTrigger=LostFocus}" Header="Rating" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

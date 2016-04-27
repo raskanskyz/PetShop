@@ -1,0 +1,27 @@
+﻿@model List<PetShopMVC.Models.RatingViewModel>
+
+<div class="row">
+   <div class="col-md-12">
+       <table class="table table-bordered table-striped table-responsive table-condensed">
+           <thead>
+               <tr>
+                   <th><strong>picture</strong></th>
+                   <th><strong>name</strong></th>
+                   <th><strong>description</strong></th>
+                   <th><strong>number of comments</strong></th>
+               </tr>
+           </thead>
+           <tbody>
+               @foreach (var item in Model)
+            {
+                   <tr>
+                       <td><img src="@item.Animal.PictureName" class="img-responsive thumbnail" /></td>
+                       <td><p>@item.Animal.Name</p></td>
+                       <td><p class="text-justify">@item.Animal.Description</p></td>
+                       <td><p>@item.CommentCount</p></td>
+                   </tr>
+               }
+           </tbody>
+       </table> 
+   </div>
+</div>

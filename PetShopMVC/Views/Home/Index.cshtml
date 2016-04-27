@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    Welcome to the PetShop
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Below is a list of top rated animals</h2>
+    </div>
+</div>
+
+    @Html.Action("TopRatedAnimals", "Home")

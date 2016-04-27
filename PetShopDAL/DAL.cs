@@ -10,8 +10,8 @@ namespace PetShopDAL
 {
     public class DAL : IPetShopDAL
     {
-
         #region used in console
+
         public List<Comment> GetCommentsList()
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -19,6 +19,7 @@ namespace PetShopDAL
                 return context.Comments.ToList<Comment>();
             }
         }
+
         public List<Category> GetCategoryEntities()
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -26,6 +27,7 @@ namespace PetShopDAL
                 return context.Categories.ToList<Category>();
             }
         }
+
         public void InsertAnimal(string animalName, int age, string pictureName, string description, string categoryName)
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -46,6 +48,7 @@ namespace PetShopDAL
                 context.SaveChanges();
             }//{"Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'. The duplicate key value is (1).\r\nThe statement has been terminated."}
         }
+
         public List<string> GetCategories()
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -53,6 +56,7 @@ namespace PetShopDAL
                 return context.Categories.Select(x => x.Name).ToList<string>();
             }
         }
+
         public List<Animal> AnimalsList()
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -60,6 +64,7 @@ namespace PetShopDAL
                 return context.Animals.ToList();
             }
         }
+
         public List<Rating> GetAnimalsOrderedByCommentCount()
         {
             List<Rating> result = new List<Rating>();
@@ -70,13 +75,14 @@ namespace PetShopDAL
                     Rating rating = new Rating()
                     {
                         Animal = entity,
-                        CommentCount = entity.Comments.Count()
+                        CommentCount =5// context.Comments.Where(x => x.AnimalId == entity.AnimalId).ToList().Count// entity.Comments.Count//getting error when counting via context.Comments.Where(x => x.AnimalId == entity.AnimalId).ToList().Count
                     };
                     result.Add(rating);
                 }
             }
-            return result.OrderBy(x => x.CommentCount).ToList();
+            return result.OrderByDescending(x => x.CommentCount).ToList();
         }
+
         public void UpdateAnimal(Guid animalId, string animalName, int age, string pictureName, string description)
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -93,6 +99,7 @@ namespace PetShopDAL
                 }
             }
         }
+
         public void InsertCategory(string CategoryName)
         {
             Category entity = new Category()
@@ -106,6 +113,7 @@ namespace PetShopDAL
                 context.SaveChanges();
             }
         }
+
         public List<string> GetCommentsOfAnimal(string animalName)//<--why by name? names can repeat
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -114,9 +122,11 @@ namespace PetShopDAL
                 return context.Comments.Where(x => x.AnimalId == animalId).Select(x => x.Comment1).ToList<string>();
             }
         }
+
         #endregion
 
         #region my helper methods
+
         public bool IsAnimalNew(Guid animalId)
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -124,6 +134,7 @@ namespace PetShopDAL
                 return context.Animals.Find(animalId) == null ? true : false;
             }
         }
+
         private Guid GetAnimalIdFromName(string animalName)
         {
             using (PetShopEntities context = new PetShopEntities())

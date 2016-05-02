@@ -1,0 +1,78 @@
+﻿@model PetShopMVC.Models.AnimalViewModel
+
+@{
+    ViewBag.Title = Model.Name + "'s Details";
+}
+
+<h2>@(Model.Name)'s Details</h2>
+
+<div>
+    <hr />
+    <table class="table table-bordered table-striped table-responsive table-condensed">
+        <thead>
+            <tr>
+                <th width="30%"><strong>picture</strong></th>
+                <th width="70%"><strong>details</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="@Model.PictureName" class="img-responsive" /></td>
+                <td>
+                    @Html.LabelFor(x => x.Name):
+                    @Html.Label(Model.Name)
+                    <br />
+                    @Html.LabelFor(x => x.Age):
+                    @Html.Label(Model.Age.ToString())
+                    <br />
+                    @Html.LabelFor(x => x.Description):
+                    <text>
+                        @Model.Description
+                    </text>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<h2>@(Model.Name)'s Comments</h2>
+<table class="table table-bordered table-striped table-responsive table-condensed">
+    <thead>
+        <tr>
+            <th><strong>comments</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Comments)
+        {
+        <tr>
+            <td>
+                <text>
+                    @item.Comment1
+                </text>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@using (Ajax.BeginForm("AddComment", "Catalog", new { animalId = Model.AnimalId }, new AjaxOptions()
+{
+    HttpMethod = "Post"
+}))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset class="form-group">
+                <label for="@Model.AnimalId">insert comment below</label>
+                <textarea name="comment" class="form-control" id="@Model.AnimalId"></textarea>
+            </fieldset>
+            <input type="submit" value="submit comment" class="btn btn-primary" />
+        </div>
+    </div>
+}
+<br />
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

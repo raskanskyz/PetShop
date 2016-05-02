@@ -17,7 +17,7 @@ namespace PetShopDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Animal()
         {
-            this.Comments = new HashSet<Comment>();
+            Comments = new List<Comment>();
         }
     
         public System.Guid AnimalId { get; set; }
@@ -29,6 +29,6 @@ namespace PetShopDAL
     
         public Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public ICollection<Comment> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

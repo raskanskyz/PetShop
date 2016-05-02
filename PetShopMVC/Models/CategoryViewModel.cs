@@ -9,12 +9,12 @@ namespace PetShopMVC.Models
     {
         public CategoryViewModel()
         {
-            this.AnimalViewModels = new HashSet<AnimalViewModel>();
+            AnimalViewModels = new List<AnimalViewModel>();
         }
 
         public int CategoryId { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<AnimalViewModel> AnimalViewModels { get; set; }
+        public List<AnimalViewModel> AnimalViewModels { get; set; }
     }
 }

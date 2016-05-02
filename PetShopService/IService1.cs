@@ -39,5 +39,14 @@ namespace PetShopService
 
         [OperationContract]
         List<string> GetCommentsOfAnimal(string animalName);
+
+        [OperationContract]
+        List<string> GetCommentsOfAnimalById(Guid animalId);
+
+        [OperationContract]
+        Animal GetAnimalById(Guid animalId);
+
+        [OperationContract]
+        void AddComment(Guid animalId, string comment);
     }
 }

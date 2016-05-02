@@ -63,6 +63,24 @@
   <wsdl:message name="IService1_GetCommentsOfAnimal_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCommentsOfAnimalResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetCommentsOfAnimalById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsOfAnimalById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCommentsOfAnimalById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentsOfAnimalByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnimalById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnimalById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnimalById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnimalByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddComment" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCommentResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetCommentsList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCommentsList" message="tns:IService1_GetCommentsList_InputMessage" />
@@ -99,6 +117,18 @@
     <wsdl:operation name="GetCommentsOfAnimal">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCommentsOfAnimal" message="tns:IService1_GetCommentsOfAnimal_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCommentsOfAnimalResponse" message="tns:IService1_GetCommentsOfAnimal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsOfAnimalById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCommentsOfAnimalById" message="tns:IService1_GetCommentsOfAnimalById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCommentsOfAnimalByIdResponse" message="tns:IService1_GetCommentsOfAnimalById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnimalById" message="tns:IService1_GetAnimalById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnimalByIdResponse" message="tns:IService1_GetAnimalById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddComment" message="tns:IService1_AddComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddCommentResponse" message="tns:IService1_AddComment_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -177,6 +207,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetCommentsOfAnimal">
       <soap:operation soapAction="http://tempuri.org/IService1/GetCommentsOfAnimal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommentsOfAnimalById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCommentsOfAnimalById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAnimalById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddComment">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddComment" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

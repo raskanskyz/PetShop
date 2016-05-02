@@ -48,6 +48,18 @@ namespace PetShopService
             return dal.GetCommentsOfAnimal(animalName);
         }
 
+        public List<string> GetCommentsOfAnimalById(Guid animalId)
+        {
+            DAL dal = new DAL();
+            return dal.GetCommentsOfAnimalById(animalId);
+        }
+
+        public Animal GetAnimalById(Guid animalId)
+        {
+            DAL dal = new DAL();
+            return dal.GetAnimalById(animalId);
+        }
+
         public void InsertAnimal(string animalName, int age, string pictureName, string description, string categoryName)
         {
             DAL dal = new DAL();
@@ -64,6 +76,12 @@ namespace PetShopService
         {
             DAL dal = new DAL();
             dal.UpdateAnimal(animalId, animalName, age, pictureName, description);
+        }
+
+        public void AddComment(Guid animalId, string comment)
+        {
+            DAL dal = new DAL();
+            dal.AddComment(animalId, comment);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PetShopSolution.Models;
+using System.Data.Entity;
 
 namespace PetShopDAL
 {
@@ -49,6 +50,37 @@ namespace PetShopDAL
             }//{"Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'. The duplicate key value is (1).\r\nThe statement has been terminated."}
         }
 
+        public Animal GetAnimalById(Guid animalId)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                var entity = context.Animals.Where(x => x.AnimalId == animalId).Include(x => x.Comments).FirstOrDefault();//.Include for eager loading
+                return entity;
+            }
+        }
+
+        public List<string> GetCommentsOfAnimalById(Guid animalId)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                return context.Comments.Where(x => x.AnimalId == animalId).Select(x => x.Comment1).ToList();
+            }
+        }
+
+        public void AddComment(Guid animalId, string comment)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                Comment entity = new Comment()
+                {
+                    AnimalId = animalId,
+                    Comment1 = comment
+                };
+                context.Comments.Add(entity);
+                context.SaveChanges();
+            }
+        }
+
         public List<string> GetCategories()
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -75,7 +107,7 @@ namespace PetShopDAL
                     Rating rating = new Rating()
                     {
                         Animal = entity,
-                        CommentCount =5// context.Comments.Where(x => x.AnimalId == entity.AnimalId).ToList().Count// entity.Comments.Count//getting error when counting via context.Comments.Where(x => x.AnimalId == entity.AnimalId).ToList().Count
+                        CommentCount = context.Comments.Where(x => x.AnimalId == entity.AnimalId).Count()
                     };
                     result.Add(rating);
                 }

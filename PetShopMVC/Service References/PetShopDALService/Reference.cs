@@ -23,9 +23,6 @@ namespace PetShopMVC.PetShopDALService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PetShopMVC.PetShopDALService.Animal AnimalField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid AnimalIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -41,19 +38,6 @@ namespace PetShopMVC.PetShopDALService {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PetShopMVC.PetShopDALService.Animal Animal {
-            get {
-                return this.AnimalField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AnimalField, value) != true)) {
-                    this.AnimalField = value;
-                    this.RaisePropertyChanged("Animal");
-                }
             }
         }
         
@@ -92,6 +76,83 @@ namespace PetShopMVC.PetShopDALService {
                 if ((this.CommentIdField.Equals(value) != true)) {
                     this.CommentIdField = value;
                     this.RaisePropertyChanged("CommentId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/PetShopDAL")]
+    [System.SerializableAttribute()]
+    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<PetShopMVC.PetShopDALService.Animal> AnimalsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<PetShopMVC.PetShopDALService.Animal> Animals {
+            get {
+                return this.AnimalsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnimalsField, value) != true)) {
+                    this.AnimalsField = value;
+                    this.RaisePropertyChanged("Animals");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryId {
+            get {
+                return this.CategoryIdField;
+            }
+            set {
+                if ((this.CategoryIdField.Equals(value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
                 }
             }
         }
@@ -265,83 +326,6 @@ namespace PetShopMVC.PetShopDALService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/PetShopDAL")]
-    [System.SerializableAttribute()]
-    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<PetShopMVC.PetShopDALService.Animal> AnimalsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CategoryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<PetShopMVC.PetShopDALService.Animal> Animals {
-            get {
-                return this.AnimalsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AnimalsField, value) != true)) {
-                    this.AnimalsField = value;
-                    this.RaisePropertyChanged("Animals");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CategoryId {
-            get {
-                return this.CategoryIdField;
-            }
-            set {
-                if ((this.CategoryIdField.Equals(value) != true)) {
-                    this.CategoryIdField = value;
-                    this.RaisePropertyChanged("CategoryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Rating", Namespace="http://schemas.datacontract.org/2004/07/PetShopSolution.Models")]
     [System.SerializableAttribute()]
     public partial class Rating : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -431,6 +415,15 @@ namespace PetShopMVC.PetShopDALService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCommentsOfAnimal", ReplyAction="http://tempuri.org/IService1/GetCommentsOfAnimalResponse")]
         System.Collections.Generic.List<string> GetCommentsOfAnimal(string animalName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCommentsOfAnimalById", ReplyAction="http://tempuri.org/IService1/GetCommentsOfAnimalByIdResponse")]
+        System.Collections.Generic.List<string> GetCommentsOfAnimalById(System.Guid animalId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnimalById", ReplyAction="http://tempuri.org/IService1/GetAnimalByIdResponse")]
+        PetShopMVC.PetShopDALService.Animal GetAnimalById(System.Guid animalId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddComment", ReplyAction="http://tempuri.org/IService1/AddCommentResponse")]
+        void AddComment(System.Guid animalId, string comment);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -494,6 +487,18 @@ namespace PetShopMVC.PetShopDALService {
         
         public System.Collections.Generic.List<string> GetCommentsOfAnimal(string animalName) {
             return base.Channel.GetCommentsOfAnimal(animalName);
+        }
+        
+        public System.Collections.Generic.List<string> GetCommentsOfAnimalById(System.Guid animalId) {
+            return base.Channel.GetCommentsOfAnimalById(animalId);
+        }
+        
+        public PetShopMVC.PetShopDALService.Animal GetAnimalById(System.Guid animalId) {
+            return base.Channel.GetAnimalById(animalId);
+        }
+        
+        public void AddComment(System.Guid animalId, string comment) {
+            base.Channel.AddComment(animalId, comment);
         }
     }
 }

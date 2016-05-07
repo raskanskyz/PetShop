@@ -54,6 +54,12 @@ namespace PetShopService
             return dal.GetCommentsOfAnimalById(animalId);
         }
 
+        public List<Comment> GetCommentEntitiesByAnimalId(Guid animalId)
+        {
+            DAL dal = new DAL();
+            return dal.GetCommentEntitiesByAnimalId(animalId);
+        }
+
         public Animal GetAnimalById(Guid animalId)
         {
             DAL dal = new DAL();
@@ -82,6 +88,12 @@ namespace PetShopService
         {
             DAL dal = new DAL();
             dal.AddComment(animalId, comment);
+        }
+
+        public List<Animal> GetAnimalsInCategoryId(int categoryId)
+        {
+            DAL dal = new DAL();
+            return dal.GetAnimalsInCategoryId(categoryId);
         }
     }
 }

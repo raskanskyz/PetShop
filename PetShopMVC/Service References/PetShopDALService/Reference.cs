@@ -419,11 +419,17 @@ namespace PetShopMVC.PetShopDALService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCommentsOfAnimalById", ReplyAction="http://tempuri.org/IService1/GetCommentsOfAnimalByIdResponse")]
         System.Collections.Generic.List<string> GetCommentsOfAnimalById(System.Guid animalId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCommentEntitiesByAnimalId", ReplyAction="http://tempuri.org/IService1/GetCommentEntitiesByAnimalIdResponse")]
+        System.Collections.Generic.List<PetShopMVC.PetShopDALService.Comment> GetCommentEntitiesByAnimalId(System.Guid animalId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnimalById", ReplyAction="http://tempuri.org/IService1/GetAnimalByIdResponse")]
         PetShopMVC.PetShopDALService.Animal GetAnimalById(System.Guid animalId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddComment", ReplyAction="http://tempuri.org/IService1/AddCommentResponse")]
         void AddComment(System.Guid animalId, string comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnimalsInCategoryId", ReplyAction="http://tempuri.org/IService1/GetAnimalsInCategoryIdResponse")]
+        System.Collections.Generic.List<PetShopMVC.PetShopDALService.Animal> GetAnimalsInCategoryId(int categoryId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -493,12 +499,20 @@ namespace PetShopMVC.PetShopDALService {
             return base.Channel.GetCommentsOfAnimalById(animalId);
         }
         
+        public System.Collections.Generic.List<PetShopMVC.PetShopDALService.Comment> GetCommentEntitiesByAnimalId(System.Guid animalId) {
+            return base.Channel.GetCommentEntitiesByAnimalId(animalId);
+        }
+        
         public PetShopMVC.PetShopDALService.Animal GetAnimalById(System.Guid animalId) {
             return base.Channel.GetAnimalById(animalId);
         }
         
         public void AddComment(System.Guid animalId, string comment) {
             base.Channel.AddComment(animalId, comment);
+        }
+        
+        public System.Collections.Generic.List<PetShopMVC.PetShopDALService.Animal> GetAnimalsInCategoryId(int categoryId) {
+            return base.Channel.GetAnimalsInCategoryId(categoryId);
         }
     }
 }

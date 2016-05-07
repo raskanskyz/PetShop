@@ -37,29 +37,16 @@
 </div>
 
 <h2>@(Model.Name)'s Comments</h2>
-<table class="table table-bordered table-striped table-responsive table-condensed">
-    <thead>
-        <tr>
-            <th><strong>comments</strong></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Comments)
-        {
-        <tr>
-            <td>
-                <text>
-                    @item.Comment1
-                </text>
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+<div id="commentsTableWrapper">
+    @Html.Action("ViewComments", "Catalog", new { animalId = Model.AnimalId })
+</div>
 
 @using (Ajax.BeginForm("AddComment", "Catalog", new { animalId = Model.AnimalId }, new AjaxOptions()
 {
-    HttpMethod = "Post"
+    HttpMethod = "Post",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "commentsTableWrapper",
+    OnSuccess = "clearTextArea();"
 }))
 {
     <div class="row">

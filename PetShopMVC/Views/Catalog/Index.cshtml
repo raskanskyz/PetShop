@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<PetShopMVC.Models.AnimalViewModel>
 
+
+
 @{
     ViewBag.Title = "Catalog";
 }
@@ -8,27 +10,21 @@
 
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-bordered table-striped table-responsive table-condensed">
-            <thead>
-                <tr>
-                    <th><strong>portrait</strong></th>
-                    <th><strong>name</strong></th>
-                    <th><strong>find out more and comment</strong></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-            {
-                    <tr>
-                        <td><img src="@item.PictureName" class="img-responsive thumbnail" /></td>
-                        <td><p>@item.Name</p></td>
-                        <td>@Ajax.ActionLink("get details", "AnimalDetails", "Catalog", new { animalId = item.AnimalId} ,new AjaxOptions()
-                       {
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="categoryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Dropdown
+                <span class="caret"></span>
+            </button>
 
-                       }, new {@class ="btn btn-primary", @id = item.AnimalId})</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+            <ul class="dropdown-menu" aria-labelledby="categoryMenu">
+                @Html.Action("Categories", "Catalog")
+            </ul>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-12" id="animalListContainer">
+      @Html.Partial("GetAnimalsInCategoryPartial", Model)
     </div>
 </div>

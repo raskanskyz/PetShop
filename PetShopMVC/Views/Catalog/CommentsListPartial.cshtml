@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PetShopMVC.Models.CommentViewModel>
+
+<table class="table table-bordered table-striped table-responsive table-condensed">
+    <thead>
+        <tr>
+            <th><strong>comments</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Comment1</td>
+            </tr>
+        }
+    </tbody>
+</table>

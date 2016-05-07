@@ -136,24 +136,38 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAnimalById">
+  <xs:element name="GetCommentEntitiesByAnimalId">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="animalId" type="q10:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetCommentEntitiesByAnimalIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PetShopDAL" minOccurs="0" name="GetCommentEntitiesByAnimalIdResult" nillable="true" type="q11:ArrayOfComment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnimalById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="animalId" type="q12:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetAnimalByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PetShopDAL" minOccurs="0" name="GetAnimalByIdResult" nillable="true" type="q11:Animal" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PetShopDAL" minOccurs="0" name="GetAnimalByIdResult" nillable="true" type="q13:Animal" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddComment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="animalId" type="q12:guid" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="animalId" type="q14:guid" />
         <xs:element minOccurs="0" name="comment" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -161,6 +175,20 @@
   <xs:element name="AddCommentResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnimalsInCategoryId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnimalsInCategoryIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PetShopDAL" minOccurs="0" name="GetAnimalsInCategoryIdResult" nillable="true" type="q15:ArrayOfAnimal" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

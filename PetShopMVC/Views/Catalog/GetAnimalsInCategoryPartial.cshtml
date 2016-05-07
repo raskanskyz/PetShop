@@ -1,0 +1,23 @@
+﻿@model IEnumerable<PetShopMVC.Models.AnimalViewModel>
+
+<table class="table table-bordered table-striped table-responsive table-condensed">
+    <thead>
+        <tr>
+            <th><strong>portrait</strong></th>
+            <th><strong>name</strong></th>
+            <th><strong>find out more and comment</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td><img src="@item.PictureName" class="img-responsive thumbnail" /></td>
+                <td><p>@item.Name</p></td>
+                <td>
+                    @Html.ActionLink("get details", "AnimalDetails", "Catalog", new { animalId = item.AnimalId}, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

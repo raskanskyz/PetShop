@@ -69,6 +69,12 @@
   <wsdl:message name="IService1_GetCommentsOfAnimalById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCommentsOfAnimalByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetCommentEntitiesByAnimalId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentEntitiesByAnimalId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCommentEntitiesByAnimalId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommentEntitiesByAnimalIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetAnimalById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAnimalById" />
   </wsdl:message>
@@ -80,6 +86,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_AddComment_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnimalsInCategoryId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnimalsInCategoryId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAnimalsInCategoryId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnimalsInCategoryIdResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetCommentsList">
@@ -122,6 +134,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCommentsOfAnimalById" message="tns:IService1_GetCommentsOfAnimalById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCommentsOfAnimalByIdResponse" message="tns:IService1_GetCommentsOfAnimalById_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetCommentEntitiesByAnimalId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCommentEntitiesByAnimalId" message="tns:IService1_GetCommentEntitiesByAnimalId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCommentEntitiesByAnimalIdResponse" message="tns:IService1_GetCommentEntitiesByAnimalId_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAnimalById">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnimalById" message="tns:IService1_GetAnimalById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnimalByIdResponse" message="tns:IService1_GetAnimalById_OutputMessage" />
@@ -129,6 +145,10 @@
     <wsdl:operation name="AddComment">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddComment" message="tns:IService1_AddComment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddCommentResponse" message="tns:IService1_AddComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalsInCategoryId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAnimalsInCategoryId" message="tns:IService1_GetAnimalsInCategoryId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAnimalsInCategoryIdResponse" message="tns:IService1_GetAnimalsInCategoryId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -223,6 +243,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetCommentEntitiesByAnimalId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCommentEntitiesByAnimalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetAnimalById">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAnimalById" style="document" />
       <wsdl:input>
@@ -234,6 +263,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddComment">
       <soap:operation soapAction="http://tempuri.org/IService1/AddComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnimalsInCategoryId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAnimalsInCategoryId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -50,6 +50,14 @@ namespace PetShopDAL
             }//{"Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'. The duplicate key value is (1).\r\nThe statement has been terminated."}
         }
 
+        public List<Comment> GetCommentEntitiesByAnimalId(Guid animalId)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                return context.Comments.Where(x => x.AnimalId == animalId).ToList();
+            }
+        }
+
         public Animal GetAnimalById(Guid animalId)
         {
             using (PetShopEntities context = new PetShopEntities())
@@ -208,6 +216,14 @@ namespace PetShopDAL
             {
                 var id = context.Categories.Where(cat => cat.Name == categoryName).Select(cat => cat.CategoryId).FirstOrDefault();
                 return context.Animals.Where(animal => animal.CategoryId == id).ToList<Animal>();
+            }
+        }
+
+        public List<Animal> GetAnimalsInCategoryId(int categoryId)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                return context.Animals.Where(animal => categoryId == animal.CategoryId).ToList<Animal>();
             }
         }
 

@@ -17,6 +17,8 @@
                 <td>
                     @Html.ActionLink("get details", "AnimalDetails", "Catalog", new { animalId = item.AnimalId }, new { @class = "btn btn-primary" })
                 </td>
+
+
                 @if ((bool)Session["IsAdmin"] == true)
                 {
                     <td>

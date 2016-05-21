@@ -54,7 +54,7 @@ namespace PetShopMVC.Controllers
                 var entity = dalService.GetAnimalById(animalId);
                 model = Mapper.Map<Animal, AnimalViewModel>(entity);
             }
-            return PartialView("AnimalDetails", model);
+            return View("AnimalDetails", model);
         }
 
         [HttpPost]

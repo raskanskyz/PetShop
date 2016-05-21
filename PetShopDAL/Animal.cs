@@ -11,24 +11,25 @@ namespace PetShopDAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Diagnostics.CodeAnalysis;
+
     public partial class Animal
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Animal()
         {
-            Comments = new List<Comment>();
+            this.Comments = new HashSet<Comment>();
         }
-    
-        public System.Guid AnimalId { get; set; }
+
+        public Guid AnimalId { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public string PictureName { get; set; }
         public string Description { get; set; }
         public int CategoryId { get; set; }
-    
+
         public Category Category { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public List<Comment> Comments { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public ICollection<Comment> Comments { get; set; }
     }
 }

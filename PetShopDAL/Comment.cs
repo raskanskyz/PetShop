@@ -10,8 +10,6 @@
 namespace PetShopDAL
 {
     using System;
-    using System.Collections.Generic;
-    using System.Runtime.Serialization;
 
     public partial class Comment
     {
@@ -19,7 +17,6 @@ namespace PetShopDAL
         public Guid AnimalId { get; set; }
         public string Comment1 { get; set; }
 
-        [IgnoreDataMember]
         public Animal Animal { get; set; }
     }
 }

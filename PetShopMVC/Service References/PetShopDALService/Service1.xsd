@@ -9,18 +9,24 @@
   <xs:element name="ArrayOfComment" nillable="true" type="tns:ArrayOfComment" />
   <xs:complexType name="Comment">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AnimalId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Animal" nillable="true" type="tns:Animal" />
       <xs:element minOccurs="0" name="Comment1" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CommentId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Comment" nillable="true" type="tns:Comment" />
-  <xs:complexType name="ArrayOfCategory">
+  <xs:complexType name="Animal">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+      <xs:element minOccurs="0" name="Age" type="xs:int" />
+      <xs:element minOccurs="0" name="AnimalId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="tns:ArrayOfComment" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PictureName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
+  <xs:element name="Animal" nillable="true" type="tns:Animal" />
   <xs:complexType name="Category">
     <xs:sequence>
       <xs:element minOccurs="0" name="Animals" nillable="true" type="tns:ArrayOfAnimal" />
@@ -35,17 +41,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfAnimal" nillable="true" type="tns:ArrayOfAnimal" />
-  <xs:complexType name="Animal">
+  <xs:complexType name="ArrayOfCategory">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Age" type="xs:int" />
-      <xs:element minOccurs="0" name="AnimalId" type="ser:guid" />
-      <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
-      <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
-      <xs:element minOccurs="0" name="Comments" nillable="true" type="tns:ArrayOfComment" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PictureName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Animal" nillable="true" type="tns:Animal" />
+  <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
 </xs:schema>

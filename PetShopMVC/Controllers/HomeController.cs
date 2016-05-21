@@ -28,6 +28,7 @@ namespace PetShopMVC.Controllers
         public ActionResult TopRatedAnimals()
         {
             List<RatingViewModel> result = new List<RatingViewModel>();
+            
             using (PetShopDALService.Service1Client service = new PetShopDALService.Service1Client())
             {
                 List<Rating> list = service.GetAnimalsOrderedByCommentCount();

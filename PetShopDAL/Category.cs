@@ -9,12 +9,12 @@
 
 namespace PetShopDAL
 {
-    using System;
     using System.Collections.Generic;
-    
+    using System.Diagnostics.CodeAnalysis;
+
     public partial class Category
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
             this.Animals = new HashSet<Animal>();
@@ -23,7 +23,7 @@ namespace PetShopDAL
         public int CategoryId { get; set; }
         public string Name { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public ICollection<Animal> Animals { get; set; }
     }
 }

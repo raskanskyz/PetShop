@@ -54,5 +54,11 @@ namespace PetShopService
 
         [OperationContract]
         List<Animal> GetAnimalsInCategoryId(int categoryId);
+
+        [OperationContract]
+        List<Animal> GetAnimalsInCategoryByName(string categoryName);
+
+        [OperationContract]
+        void DeleteAnimal (Guid animalId);
     }
 }

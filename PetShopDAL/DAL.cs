@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using PetShopSolution.Models;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace PetShopDAL
 {
@@ -31,30 +33,46 @@ namespace PetShopDAL
 
         public void InsertAnimal(string animalName, int age, string pictureName, string description, string categoryName)
         {
-            using (PetShopEntities context = new PetShopEntities())
+            try
             {
-                var categoryId = context.Categories.Where(x => x.Name == categoryName).Select(x => x.CategoryId).FirstOrDefault();
-                Animal entity = new Animal()
+                using (PetShopEntities context = new PetShopEntities())
                 {
-                    AnimalId = Guid.NewGuid(),
-                    Name = animalName,
-                    Age = age,
-                    PictureName = pictureName,
-                    Description = description,
-                    CategoryId = categoryId,
-                    Category = context.Categories.Where(x => x.CategoryId == categoryId).First(),
-                    Comments = null//<--noo comments on new animal
-                };
-                context.Animals.Add(entity);
-                context.SaveChanges();
-            }//{"Violation of PRIMARY KEY constraint 'PK_Categories'. Cannot insert duplicate key in object 'dbo.Categories'. The duplicate key value is (1).\r\nThe statement has been terminated."}
+                    var categoryId = context.Categories.Where(x => x.Name == categoryName).Select(x => x.CategoryId).FirstOrDefault();
+                    Animal entity = new Animal()
+                    {
+                        AnimalId = Guid.NewGuid(),
+                        Name = animalName,
+                        Age = age,
+                        PictureName = pictureName,
+                        Description = description,
+                        //CategoryId = categoryId,
+                        Category = context.Categories.Where(x => x.CategoryId == categoryId).First(),
+                        Comments = null//<--noo comments on new animal
+                    };
+                    context.Animals.Add(entity);
+                    context.SaveChanges();
+                }
+            }
+
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}",
+                                                validationError.PropertyName,
+                                                validationError.ErrorMessage);
+                    }
+                }
+            }
         }
 
         public List<Comment> GetCommentEntitiesByAnimalId(Guid animalId)
         {
             using (PetShopEntities context = new PetShopEntities())
             {
-                return context.Comments.Where(x => x.AnimalId == animalId).ToList();
+                return context.Comments.Where(x => x.Animal.AnimalId == animalId).ToList();
             }
         }
 
@@ -62,7 +80,7 @@ namespace PetShopDAL
         {
             using (PetShopEntities context = new PetShopEntities())
             {
-                var entity = context.Animals.Where(x => x.AnimalId == animalId).Include(x => x.Comments).FirstOrDefault();//.Include for eager loading
+                var entity = context.Animals.Where(x => x.AnimalId == animalId).FirstOrDefault();//.Include(x => x.Comments).FirstOrDefault();//.Include for eager loading
                 return entity;
             }
         }
@@ -71,7 +89,7 @@ namespace PetShopDAL
         {
             using (PetShopEntities context = new PetShopEntities())
             {
-                return context.Comments.Where(x => x.AnimalId == animalId).Select(x => x.Comment1).ToList();
+                return context.Comments.Where(x => x.Animal.AnimalId == animalId).Select(x => x.Comment1).ToList();
             }
         }
 
@@ -81,7 +99,7 @@ namespace PetShopDAL
             {
                 Comment entity = new Comment()
                 {
-                    AnimalId = animalId,
+                    Animal = context.Animals.Where(x => x.AnimalId == animalId).First(),
                     Comment1 = comment
                 };
                 context.Comments.Add(entity);
@@ -115,7 +133,7 @@ namespace PetShopDAL
                     Rating rating = new Rating()
                     {
                         Animal = entity,
-                        CommentCount = context.Comments.Where(x => x.AnimalId == entity.AnimalId).Count()
+                        CommentCount = context.Comments.Where(x => x.Animal.AnimalId == entity.AnimalId).Count()
                     };
                     result.Add(rating);
                 }
@@ -159,7 +177,7 @@ namespace PetShopDAL
             using (PetShopEntities context = new PetShopEntities())
             {
                 var animalId = GetAnimalIdFromName(animalName);
-                return context.Comments.Where(x => x.AnimalId == animalId).Select(x => x.Comment1).ToList<string>();
+                return context.Comments.Where(x => x.Animal.AnimalId == animalId).Select(x => x.Comment1).ToList<string>();
             }
         }
 
@@ -215,7 +233,7 @@ namespace PetShopDAL
             using (PetShopEntities context = new PetShopEntities())
             {
                 var id = context.Categories.Where(cat => cat.Name == categoryName).Select(cat => cat.CategoryId).FirstOrDefault();
-                return context.Animals.Where(animal => animal.CategoryId == id).ToList<Animal>();
+                return context.Animals.Where(animal => animal.Category.CategoryId == id).ToList<Animal>();
             }
         }
 
@@ -223,20 +241,49 @@ namespace PetShopDAL
         {
             using (PetShopEntities context = new PetShopEntities())
             {
-                return context.Animals.Where(animal => categoryId == animal.CategoryId).ToList<Animal>();
+                return context.Animals.Where(animal => categoryId == animal.Category.CategoryId).ToList<Animal>();
             }
         }
 
-        public void InsertComment(string animalName, string comment)
+        public void InsertComment(Guid animalId, string comment)
         {
             Comment entity = new Comment()
             {
-                AnimalId = GetAnimalIdFromName(comment),
+                Animal = GetAnimalById(animalId),
                 Comment1 = comment
             };
             using (PetShopEntities context = new PetShopEntities())
             {
                 context.Comments.Add(entity);
+                context.SaveChanges();
+            }
+        }
+
+        public List<Animal> GetAnimalsInCategoryByName(string categoryName)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                return context.Animals.Where(animal => animal.Category.Name == categoryName).ToList<Animal>();
+            }
+        }
+
+        public void DeleteAnimal(Guid animalId)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                Animal entity = context.Animals.Where(x => x.AnimalId == animalId).FirstOrDefault();
+                context.Animals.Remove(entity);//consider implementing single access to DB
+                context.SaveChanges();
+            }
+        }
+
+        //stupid animalName - NOT UNIQUE
+        public void InsertComment(string animalName, string comment)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                Animal entity = context.Animals.Where(x => x.Name == animalName).FirstOrDefault();
+                context.Animals.Remove(entity);//consider implementing single access to DB
                 context.SaveChanges();
             }
         }

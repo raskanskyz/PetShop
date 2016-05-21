@@ -218,6 +218,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery.pnotify.css" />
+    <Content Include="Content\jquery.pnotify.icons.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -236,6 +238,10 @@
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Content\pnotify.custom.css" />
+    <Content Include="Scripts\pnotify.custom.js" />
+    <Content Include="Scripts\pnotify.js" />
+    <Content Include="Scripts\pnotify.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -253,6 +259,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\jquery-2.2.3.min.map" />
     <Content Include="Service References\PetShopDALService\PetShopMVC.PetShopDALService.Animal.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -265,7 +272,6 @@
     <Content Include="Service References\PetShopDALService\PetShopMVC.PetShopDALService.Rating.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-2.2.3.min.map" />
     <None Include="Service References\PetShopDALService\Service1.disco" />
     <None Include="Service References\PetShopDALService\configuration91.svcinfo" />
     <None Include="Service References\PetShopDALService\configuration.svcinfo" />
@@ -308,6 +314,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\TopRatedPartial.cshtml" />
+    <Content Include="Views\Catalog\Index.cshtml" />
+    <Content Include="Views\Catalog\AnimalDetails.cshtml" />
+    <Content Include="Views\Catalog\GetAnimalsInCategoryPartial.cshtml" />
+    <Content Include="Views\Catalog\CommentsListPartial.cshtml" />
     <None Include="Service References\PetShopDALService\Service1.wsdl" />
     <None Include="Service References\PetShopDALService\Service1.xsd">
       <SubType>Designer</SubType>
@@ -324,11 +334,6 @@
     <None Include="Service References\PetShopDALService\Service14.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Catalog\Index.cshtml" />
-    <Content Include="Views\Catalog\AnimalDetails.cshtml" />
-    <Content Include="Views\Catalog\CategoryNamesPartial.cshtml" />
-    <Content Include="Views\Catalog\GetAnimalsInCategoryPartial.cshtml" />
-    <Content Include="Views\Catalog\CommentsListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

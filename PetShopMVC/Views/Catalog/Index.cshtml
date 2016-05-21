@@ -1,30 +1,93 @@
 ﻿@model IEnumerable<PetShopMVC.Models.AnimalViewModel>
 
-
-
 @{
     ViewBag.Title = "Catalog";
+    @Html.Hidden("GetAnimalsInCategory", Url.Action("GetAnimalsInCategory", "Catalog"))
+    @Html.Hidden("GetAnimalsInCategoryByName", Url.Action("GetAnimalsInCategoryByName", "Catalog"))
+    @Html.Hidden("AddNewAnimal", Url.Action("AddAnimal", "Catalog"))
+    @Html.Hidden("GetAllAnimals", Url.Action("GetAllAnimals", "Catalog"))
+
 }
 
 <h2>Animals Catalog</h2>
 
+
 <div class="row">
     <div class="col-md-12">
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="categoryMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Dropdown
-                <span class="caret"></span>
-            </button>
+        @Html.DropDownList("categoryList", (List<SelectListItem>)ViewBag.CategoriesSelectList, new { @class = "form-control", @style = "display: inline;" })
+        @if ((bool)Session["IsAdmin"] == true)
+        {
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addAnimalModal">Add Animal</button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="addAnimalModal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close"
+                                    data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                Add new animal to Raskanskyz PetShop
+                            </h4>
+                        </div>
 
-            <ul class="dropdown-menu" aria-labelledby="categoryMenu">
-                @Html.Action("Categories", "Catalog")
-            </ul>
-        </div>
+                        <!-- Modal Body -->
+                        <div class="modal-body">
+                            <form id="addAnimalFormInfo" class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    @Html.Label("Name", "animal name", new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="Name" name="Name" placeholder="animal name" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Age", "animal age", new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        <input type="number" class="form-control" id="Age" name="Age" placeholder="animal age" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("PictureName", "animal picture url", new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        <input type="url" class="form-control" id="PictureName" name="PictureName" placeholder="animal piture url" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Description", "animal description", new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="Description" name="Description" placeholder="animal description" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Category.Name", "category name", new { @class = "col-sm-4 control-label" })
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="Category.Name" name="Category.Name" placeholder="animal category" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">
+                                Close
+                            </button>
+                            <input id="addAnimalSubmit" type="button" class="btn btn-primary" value="add animal" data-dismiss="modal" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
-<br/>
+<br />
 <div class="row">
     <div class="col-md-12" id="animalListContainer">
-      @Html.Partial("GetAnimalsInCategoryPartial", Model)
+        @Html.Partial("GetAnimalsInCategoryPartial", Model)
     </div>
 </div>

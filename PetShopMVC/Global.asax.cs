@@ -22,5 +22,11 @@ namespace PetShopMVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfig.RegisterMappings();
         }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+            //TODO: set isadmin by user type
+            HttpContext.Current.Session.Add("IsAdmin", true);
+        }
     }
 }

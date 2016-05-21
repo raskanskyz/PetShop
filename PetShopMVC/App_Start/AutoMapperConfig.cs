@@ -14,9 +14,13 @@ namespace PetShopMVC.App_Start
         {
             Mapper.Initialize(cfg => {
                 cfg.CreateMap<Rating, RatingViewModel>();
+                cfg.CreateMap<RatingViewModel, Rating>();
                 cfg.CreateMap<Animal, AnimalViewModel>();
+                cfg.CreateMap<AnimalViewModel, Animal>();
                 cfg.CreateMap<Comment, CommentViewModel>();
+                cfg.CreateMap<CommentViewModel, Comment>();
                 cfg.CreateMap<Category, CategoryViewModel>();
+                cfg.CreateMap<CategoryViewModel, Category>();
             });
         }
     }

@@ -9,7 +9,9 @@ namespace PetShopMVC
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/petshop").Include(
-                        "~/Scripts/petshop.js"));
+                        "~/Scripts/pnotify.custom.js",
+                        "~/Scripts/petshop.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
@@ -29,7 +31,8 @@ namespace PetShopMVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/pnotify.custom.css"));
         }
     }
 }

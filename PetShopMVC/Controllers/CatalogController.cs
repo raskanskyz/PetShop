@@ -24,29 +24,23 @@ namespace PetShopMVC.Controllers
                     model.Category = category;
                     result.Add(model);
                 }
-                var entities = dalService.GetCategoryEntities();
-
-                List<SelectListItem> items = new List<SelectListItem>();
-                items.Add(new SelectListItem
-                {
-                    Text = "---select a category---",
-                    Selected = true,
-                    Value = "0"
-                });
-                items.AddRange(entities.Select(x => new SelectListItem
-                {
-                    Value = x.CategoryId.ToString(),
-                    Text = x.Name
-                }).ToList());
-                ViewBag.CategoriesSelectList = items;
+                PopulateDropDownList(dalService);
             }
-            return View("Index", result);
+            return View("Index", result.OrderBy(animal => animal.Name));
+        }
+
+        public ActionResult Administrator()
+        {
+            return 
         }
 
         public ActionResult Administrator(string email, string password)
         {
             //TODO: iplement authentication
-            Animal temp = new Animal();
+            if(email == "mcsd2016" && password == "mcsd2016")
+            {
+                HttpContext.Session.Add("IsAdmin", true);
+            }
             return Index();
         }
 
@@ -152,7 +146,7 @@ namespace PetShopMVC.Controllers
                 {
                     result.Add(Mapper.Map<Animal, AnimalViewModel>(entity));
                 }
-                return PartialView("GetAnimalsInCategoryPartial", result);
+                return PartialView("GetAnimalsInCategoryPartial", result.OrderByDescending(x => x.Name));
             }
         }
 
@@ -190,6 +184,25 @@ namespace PetShopMVC.Controllers
             {
                 return dalService.GetCategoryNameById(id);
             }
+        }
+
+        private void PopulateDropDownList(Service1Client dalService)
+        {
+            var entities = dalService.GetCategoryEntities();
+
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem
+            {
+                Text = "---select a category---",
+                Selected = true,
+                Value = "0"
+            });
+            items.AddRange(entities.Select(x => new SelectListItem
+            {
+                Value = x.CategoryId.ToString(),
+                Text = x.Name
+            }).ToList());
+            ViewBag.CategoriesSelectList = items;
         }
     }
 }

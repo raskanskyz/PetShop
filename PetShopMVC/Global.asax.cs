@@ -26,7 +26,7 @@ namespace PetShopMVC
         protected void Session_Start(object sender, EventArgs e)
         {
             //TODO: set isadmin by user type
-            HttpContext.Current.Session.Add("IsAdmin", true);
+            //HttpContext.Current.Session.Add("IsAdmin", true);
         }
     }
 }

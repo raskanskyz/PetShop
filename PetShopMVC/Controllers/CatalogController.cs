@@ -19,7 +19,10 @@ namespace PetShopMVC.Controllers
             {
                 foreach (Animal item in dalService.AnimalsList())
                 {
-                    result.Add(Mapper.Map<Animal, AnimalViewModel>(item));
+                    var category = Mapper.Map<Category, CategoryViewModel>(dalService.GetAnimalCategory(item.AnimalId));
+                    AnimalViewModel model = Mapper.Map<Animal, AnimalViewModel>(item);
+                    model.Category = category;
+                    result.Add(model);
                 }
                 var entities = dalService.GetCategoryEntities();
 
@@ -42,6 +45,7 @@ namespace PetShopMVC.Controllers
 
         public ActionResult Administrator(string email, string password)
         {
+            //TODO: iplement authentication
             Animal temp = new Animal();
             return Index();
         }
@@ -52,9 +56,22 @@ namespace PetShopMVC.Controllers
             using (Service1Client dalService = new Service1Client())
             {
                 var entity = dalService.GetAnimalById(animalId);
+                var category = Mapper.Map<Category, CategoryViewModel>(dalService.GetAnimalCategory(animalId));
                 model = Mapper.Map<Animal, AnimalViewModel>(entity);
+                model.Category = category;
             }
             return View("AnimalDetails", model);
+        }
+
+        public JsonResult AnimalDetailsJson(Guid animalId)
+        {
+            AnimalViewModel model;
+            using (Service1Client dalService = new Service1Client())
+            {
+                var entity = dalService.GetAnimalById(animalId);
+                model = Mapper.Map<Animal, AnimalViewModel>(entity);
+            }
+            return Json(new { result = model }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -151,7 +168,11 @@ namespace PetShopMVC.Controllers
 
         public ActionResult UpdateAnimal(AnimalViewModel model)
         {
-            return null;
+            using (Service1Client dalService = new Service1Client())
+            {
+                dalService.UpdateAnimal(model.AnimalId, model.Name, model.Age, model.PictureName, model.Description);
+            }
+            return GetAnimalsInCategory(model.CategoryId);
         }
 
         public ActionResult DeleteAnimal(Guid animalId)
@@ -161,6 +182,14 @@ namespace PetShopMVC.Controllers
                 dalService.DeleteAnimal(animalId);
             }
             return GetAllAnimals();
+        }
+
+        public string GetCategoryNameById(int id)
+        {
+            using (Service1Client dalService = new Service1Client())
+            {
+                return dalService.GetCategoryNameById(id);
+            }
         }
     }
 }

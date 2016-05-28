@@ -29,7 +29,7 @@ namespace PetShopMVC.Controllers
         {
             List<RatingViewModel> result = new List<RatingViewModel>();
             
-            using (PetShopDALService.Service1Client service = new PetShopDALService.Service1Client())
+            using (Service1Client service = new Service1Client())
             {
                 List<Rating> list = service.GetAnimalsOrderedByCommentCount();
                 foreach (var item in list)

@@ -107,5 +107,17 @@ namespace PetShopService
             DAL dal = new DAL();
             dal.DeleteAnimal(animalId);
         }
+
+        public Category GetAnimalCategory(Guid animalId)
+        {
+            DAL dal = new DAL();
+            return dal.GetAnimalCategory(animalId);
+        }
+
+        public string GetCategoryNameById(int id)
+        {
+            DAL dal = new DAL();
+            return dal.GetCategoryNameById(id);
+        }
     }
 }

@@ -58,3 +58,38 @@ function UpdateView(categoryName) {
         $("#animalListContainer").html(data);
     });
 };
+
+$(".edit-animal").on("click", function () {
+    $.getJSON($("#AnimalDetailsJson").val(), { animalId: $(this).attr("id") }, function (data) {
+        $.post($("#GetCategoryNameById").val(), { id: data.result.CategoryId }, function (data) {
+            $("#updateCategoryName").val(data);
+        });
+        $("#AnimalId").val(data.result.AnimalId);
+        $("#updateModalLabel").text("edit " + data.result.Name + "'s details");
+        $("#updateName").val(data.result.Name);
+        $("#updateAge").val(data.result.Age);
+        $("#updatePictureName").val(data.result.PictureName);
+        $("#updateDescription").val(data.result.Description);
+        //TODO: update edit form details
+        //TODO: refresh picture
+    });
+});
+
+$("#editAnimalSubmit").on("click", function () {
+    var formInfo = $("#editAnimalFormInfo");
+    $.ajax({
+        url: $("#UpdateAnimal").val(),
+        type: 'post',
+        data: formInfo.serialize(),
+        success: function () {
+            new PNotify({
+                title: 'Regular Success',
+                text: 'That thing that you were trying to do worked!',
+                type: 'success'
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert("addAnimalSubmit: " + errorThrown);
+        }
+    });
+});

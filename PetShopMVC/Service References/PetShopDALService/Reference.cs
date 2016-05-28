@@ -26,6 +26,9 @@ namespace PetShopMVC.PetShopDALService {
         private PetShopMVC.PetShopDALService.Animal AnimalField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid AnimalIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Comment1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -50,6 +53,19 @@ namespace PetShopMVC.PetShopDALService {
                 if ((object.ReferenceEquals(this.AnimalField, value) != true)) {
                     this.AnimalField = value;
                     this.RaisePropertyChanged("Animal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid AnimalId {
+            get {
+                return this.AnimalIdField;
+            }
+            set {
+                if ((this.AnimalIdField.Equals(value) != true)) {
+                    this.AnimalIdField = value;
+                    this.RaisePropertyChanged("AnimalId");
                 }
             }
         }
@@ -109,6 +125,9 @@ namespace PetShopMVC.PetShopDALService {
         private PetShopMVC.PetShopDALService.Category CategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Collections.Generic.List<PetShopMVC.PetShopDALService.Comment> CommentsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -165,6 +184,19 @@ namespace PetShopMVC.PetShopDALService {
                 if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
                     this.CategoryField = value;
                     this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CategoryId {
+            get {
+                return this.CategoryIdField;
+            }
+            set {
+                if ((this.CategoryIdField.Equals(value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
                 }
             }
         }
@@ -420,6 +452,12 @@ namespace PetShopMVC.PetShopDALService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteAnimal", ReplyAction="http://tempuri.org/IService1/DeleteAnimalResponse")]
         void DeleteAnimal(System.Guid animalId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAnimalCategory", ReplyAction="http://tempuri.org/IService1/GetAnimalCategoryResponse")]
+        PetShopMVC.PetShopDALService.Category GetAnimalCategory(System.Guid animalId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCategoryNameById", ReplyAction="http://tempuri.org/IService1/GetCategoryNameByIdResponse")]
+        string GetCategoryNameById(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -511,6 +549,14 @@ namespace PetShopMVC.PetShopDALService {
         
         public void DeleteAnimal(System.Guid animalId) {
             base.Channel.DeleteAnimal(animalId);
+        }
+        
+        public PetShopMVC.PetShopDALService.Category GetAnimalCategory(System.Guid animalId) {
+            return base.Channel.GetAnimalCategory(animalId);
+        }
+        
+        public string GetCategoryNameById(int id) {
+            return base.Channel.GetCategoryNameById(id);
         }
     }
 }

@@ -15,17 +15,19 @@
                 <td><img src="@item.PictureName" class="img-responsive thumbnail" /></td>
                 <td><p>@item.Name</p></td>
                 <td>
-                    @Html.ActionLink("get details", "AnimalDetails", "Catalog", new { animalId = item.AnimalId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("get " + item.Name + "'s details", "AnimalDetails", "Catalog", new { animalId = item.AnimalId }, new { @class = "btn btn-primary" })
                 </td>
 
 
                 @if ((bool)Session["IsAdmin"] == true)
                 {
                     <td>
-                        @Html.ActionLink("edit", "AnimalDetails", "Catalog", new { animalId = item.AnimalId }, new { @class = "btn btn-primary" })
+                        @*<input type="button" class="btn btn-primary animal-details" value="edit @item.Name's details" name="@item.AnimalId" />*@
+                        <button id="@item.AnimalId" class="btn btn-primary edit-animal" data-toggle="modal" data-target="#editAnimalModal">edit @item.Name's details</button>
+                        @*@Html.ActionLink("edit " + item.Name + "'s details", "AnimalDetails", "Catalog", new { animalId = item.AnimalId }, new { @class = "btn btn-primary" })*@
                     </td>
                     <td>
-                        @Ajax.ActionLink("delete", "DeleteAnimal", "Catalog", new { animalId = item.AnimalId }, new AjaxOptions()
+                        @Ajax.ActionLink("delete " + item.Name, "DeleteAnimal", "Catalog", new { animalId = item.AnimalId }, new AjaxOptions()
                    {
                        UpdateTargetId = "animalListContainer",
                        InsertionMode = InsertionMode.Replace,

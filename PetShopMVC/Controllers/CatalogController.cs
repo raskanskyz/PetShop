@@ -29,19 +29,21 @@ namespace PetShopMVC.Controllers
             return View("Index", result.OrderBy(animal => animal.Name));
         }
 
+        [ActionName(name: "AdministratorLogin")]
         public ActionResult Administrator()
         {
-            return 
+            return View("Administrator");
         }
 
-        public ActionResult Administrator(string email, string password)
+        [ActionName(name: "Administrator")]
+        public ActionResult Administrator(string inputEmail, string inputPassword)
         {
             //TODO: iplement authentication
-            if(email == "mcsd2016" && password == "mcsd2016")
+            if(inputEmail == "mcsd2016@gmail.com" && inputPassword == "mcsd2016@gmail.com")
             {
                 HttpContext.Session.Add("IsAdmin", true);
             }
-            return Index();
+            return RedirectToAction("Index");
         }
 
         public ActionResult AnimalDetails(Guid animalId)

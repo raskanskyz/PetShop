@@ -19,7 +19,7 @@
                 </td>
 
 
-                @if ((bool)Session["IsAdmin"] == true)
+                @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] == true)
                 {
                     <td>
                         @*<input type="button" class="btn btn-primary animal-details" value="edit @item.Name's details" name="@item.AnimalId" />*@

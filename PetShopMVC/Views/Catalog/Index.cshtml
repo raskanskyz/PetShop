@@ -18,7 +18,7 @@
 <div class="row">
     <div class="col-md-12">
         @Html.DropDownList("categoryList", (List<SelectListItem>)ViewBag.CategoriesSelectList, new { @class = "form-control", @style = "display: inline;" })
-        @if ((bool)Session["IsAdmin"] == true)
+        @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] == true)
         {
             <button class="btn btn-primary" data-toggle="modal" data-target="#addAnimalModal">Add Animal</button>
 

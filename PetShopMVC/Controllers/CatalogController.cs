@@ -39,7 +39,7 @@ namespace PetShopMVC.Controllers
         public ActionResult Administrator(string inputEmail, string inputPassword)
         {
             //TODO: iplement authentication
-            if(inputEmail == "mcsd2016@gmail.com" && inputPassword == "mcsd2016@gmail.com")
+            if (inputEmail == "mcsd2016@gmail.com" && inputPassword == "mcsd2016@gmail.com")
             {
                 HttpContext.Session.Add("IsAdmin", true);
             }
@@ -202,7 +202,7 @@ namespace PetShopMVC.Controllers
             items.AddRange(entities.Select(x => new SelectListItem
             {
                 Value = x.CategoryId.ToString(),
-                Text = x.Name
+                Text = x.Name,
             }).ToList());
             ViewBag.CategoriesSelectList = items;
         }

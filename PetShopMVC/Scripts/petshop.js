@@ -1,13 +1,22 @@
-﻿function clearTextArea() {
+﻿$(document).ready(function () {
+    LoadDataTables();
+});
+
+function clearTextArea() {
     $('textarea[name=comment]').val("");
 }
 
 $("#addAnimalSubmit").on("click", function () {
     var formInfo = $("#addAnimalFormInfo");
+    catObject = {
+        "CategoryId": $("#Category option:selected").val()
+    };
+    var model = formInfo.serialize() + '&' + $.param(catObject);
+    alert(model);
     $.ajax({
         url: $("#AddNewAnimal").val(),
         type: 'post',
-        data: formInfo.serialize(),
+        data: model,
         success: function () {
             new PNotify({
                 title: 'Regular Success',
@@ -44,10 +53,11 @@ $("#categoryList").on("change", function (e) {
             data: { categoryId: $("#categoryList option:selected").val() },
             success: function (content) {
                 $("#animalListContainer").html(content);
+                LoadDataTables();
             },
             error: function () {
                 alert($(this).val());
-            }
+            },
         });
     }
 });
@@ -93,3 +103,7 @@ $("#editAnimalSubmit").on("click", function () {
         }
     });
 });
+
+function LoadDataTables() {
+    $("#petShopTable").DataTable();
+}

@@ -1,11 +1,16 @@
 ﻿@model IEnumerable<PetShopMVC.Models.AnimalViewModel>
 
-<table class="table table-bordered table-striped table-responsive table-condensed">
+<table id="petShopTable" class="table table-bordered table-striped table-responsive table-condensed">
     <thead>
         <tr>
             <th><strong>portrait</strong></th>
             <th><strong>name</strong></th>
             <th><strong>find out more and comment</strong></th>
+            @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] == true)
+            {
+                <th><strong>edit animal details</strong></th>
+                <th><strong>delete animal from inventory</strong></th>
+            }
         </tr>
     </thead>
     <tbody>

@@ -67,9 +67,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    @Html.Label("Category.Name", "category name", new { @class = "col-sm-4 control-label" })
+                                    @Html.Label("Category.Name", "category name", new { @class = "col-sm-4 control-label"})
                                     <div class="col-sm-8">
-                                        @Html.DropDownList("categoryList", (List<SelectListItem>)ViewBag.CategoriesSelectList, new { @class = "form-control", @style = "display: inline;" })
+                                        @Html.DropDownList("Category", (List<SelectListItem>)ViewBag.CategoriesSelectList, new { @class = "form-control", @style = "display: inline;" })
                                     </div>
                                 </div>
                             </form>

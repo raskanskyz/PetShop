@@ -401,6 +401,83 @@ namespace PetShopMVC.PetShopDALService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/PetShopDAL")]
+    [System.SerializableAttribute()]
+    public partial class Picture : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid animalIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] imageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid pictureIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid animalId {
+            get {
+                return this.animalIdField;
+            }
+            set {
+                if ((this.animalIdField.Equals(value) != true)) {
+                    this.animalIdField = value;
+                    this.RaisePropertyChanged("animalId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] image {
+            get {
+                return this.imageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.imageField, value) != true)) {
+                    this.imageField = value;
+                    this.RaisePropertyChanged("image");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid pictureId {
+            get {
+                return this.pictureIdField;
+            }
+            set {
+                if ((this.pictureIdField.Equals(value) != true)) {
+                    this.pictureIdField = value;
+                    this.RaisePropertyChanged("pictureId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PetShopDALService.IService1")]
     public interface IService1 {
@@ -461,6 +538,9 @@ namespace PetShopMVC.PetShopDALService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteComment", ReplyAction="http://tempuri.org/IService1/DeleteCommentResponse")]
         void DeleteComment(PetShopMVC.PetShopDALService.Comment comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UploadImage", ReplyAction="http://tempuri.org/IService1/UploadImageResponse")]
+        void UploadImage(PetShopMVC.PetShopDALService.Picture picture);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -564,6 +644,10 @@ namespace PetShopMVC.PetShopDALService {
         
         public void DeleteComment(PetShopMVC.PetShopDALService.Comment comment) {
             base.Channel.DeleteComment(comment);
+        }
+        
+        public void UploadImage(PetShopMVC.PetShopDALService.Picture picture) {
+            base.Channel.UploadImage(picture);
         }
     }
 }

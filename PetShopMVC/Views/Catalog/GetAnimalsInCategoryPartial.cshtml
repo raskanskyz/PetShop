@@ -9,6 +9,7 @@
             @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] == true)
             {
                 <th><strong>edit animal details</strong></th>
+                <th><strong>upload image</strong></th>
                 <th><strong>delete animal from inventory</strong></th>
             }
         </tr>
@@ -28,6 +29,16 @@
                 {
                     <td>
                         <button id="@item.AnimalId" class="btn btn-primary edit-animal" data-toggle="modal" data-target="#editAnimalModal">edit @item.Name's details</button>
+                    </td>
+                    <td>
+                        @using (@Ajax.BeginForm("UploadImage", "Catalog", new { animalId = item.AnimalId }, new AjaxOptions()
+                        {
+
+
+                        }, new { @class = "dropzone" }))
+                        {
+                            @*-----------------------*@
+                        }
                     </td>
                     <td>
                         @Ajax.ActionLink("delete " + item.Name, "DeleteAnimal", "Catalog", new { animalId = item.AnimalId }, new AjaxOptions()

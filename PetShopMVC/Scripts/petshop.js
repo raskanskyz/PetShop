@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿ $(document).ready(function () {
     LoadDataTables();
 });
 
@@ -19,8 +19,8 @@ $("#addAnimalSubmit").on("click", function () {
         data: model,
         success: function () {
             new PNotify({
-                title: 'Regular Success',
-                text: 'That thing that you were trying to do worked!',
+                title: "Successfully added " + $("#Name").val(),
+                text: $("#Name").val() + " has been added to the system and can be viewed in list",
                 type: 'success'
             });
             UpdateView(formInfo.find('input[name="Category.Name"]').val());
@@ -93,8 +93,8 @@ $("#editAnimalSubmit").on("click", function () {
         data: formInfo.serialize(),
         success: function () {
             new PNotify({
-                title: 'Regular Success',
-                text: 'That thing that you were trying to do worked!',
+                title: "Successfully edited " + $("#updateName").val() + "'s details",
+                text: 'details have been updated in the system and are reflected systemwide',
                 type: 'success'
             });
         },

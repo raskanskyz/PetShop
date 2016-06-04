@@ -125,5 +125,11 @@ namespace PetShopService
             DAL dal = new DAL();
             dal.DeleteComment(comment);
         }
+
+        public void UploadImage(Picture picture)
+        {
+            DAL dal = new DAL();
+            dal.UploadImage(picture);
+        }
     }
 }

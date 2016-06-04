@@ -31,6 +31,14 @@
           <Property Name="AnimalId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Comment" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
+        <EntityType Name="Pictures">
+          <Key>
+            <PropertyRef Name="pictureId" />
+          </Key>
+          <Property Name="pictureId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="image" Type="image" Nullable="false" />
+          <Property Name="animalId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Animals_Categories">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Animals" Type="Self.Animals" Multiplicity="*" />
@@ -59,6 +67,7 @@
           <EntitySet Name="Animals" EntityType="Self.Animals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pictures" EntityType="Self.Pictures" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Animals_Categories" Association="Self.FK_Animals_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Animals" EntitySet="Animals" />
@@ -138,7 +147,16 @@
             <End Role="Animals" EntitySet="Animals" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
+          <EntitySet Name="Pictures" EntityType="PetShopModel.Picture" />
         </EntityContainer>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="pictureId" />
+          </Key>
+          <Property Name="pictureId" Type="Guid" Nullable="false" />
+          <Property Name="image" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="animalId" Type="Guid" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -171,6 +189,15 @@
                 <ScalarProperty Name="CommentId" ColumnName="CommentId" />
                 <ScalarProperty Name="AnimalId" ColumnName="AnimalId" />
                 <ScalarProperty Name="Comment1" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="PetShopModel.Picture">
+              <MappingFragment StoreEntitySet="Pictures">
+                <ScalarProperty Name="animalId" ColumnName="animalId" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="pictureId" ColumnName="pictureId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

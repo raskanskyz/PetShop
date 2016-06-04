@@ -10,6 +10,7 @@ namespace PetShopMVC
         {
             bundles.Add(new ScriptBundle("~/bundles/petshop").Include(
                         "~/Scripts/pnotify.custom.js",
+                        "~/Scripts/dropzone/dropzone.js",
                         "~/Scripts/petshop.js"
                         ));
 
@@ -41,7 +42,9 @@ namespace PetShopMVC
                       "~/Content/pnotify.custom.css",
                       "~/Content/jquery.dataTables.css",
                       "~/Content/DataTables/css/dataTables.bootstrap.css",
-                      "~/Content/themes/dark-hive/jquery-ui.dark-hive.css"));
+                      "~/Content/themes/dark-hive/jquery-ui.dark-hive.css",
+                      "~/Content/dropzone/basic.css",
+                      "~/Content/dropzone/dropzone.css"));
         }
     }
 }

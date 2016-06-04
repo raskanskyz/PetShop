@@ -257,4 +257,16 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="UploadImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/PetShopDAL" minOccurs="0" name="picture" nillable="true" type="q21:Picture" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadImageResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

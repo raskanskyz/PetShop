@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="PetShopModel.Comment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="PetShopModel.FK_Animals_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="PetShopModel.FK_Comments_Animals" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PetShopModel.Picture" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

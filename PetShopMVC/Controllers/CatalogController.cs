@@ -3,6 +3,7 @@ using PetShopMVC.Models;
 using PetShopMVC.PetShopDALService;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -232,6 +233,48 @@ namespace PetShopMVC.Controllers
                 Text = x.Name,
             }).ToList());
             ViewBag.CategoriesSelectList = items;
+        }
+
+        public ActionResult UploadImage(Guid animalId)
+        {
+
+            //bool isSavedSuccessfully = true;
+            string fName = "";
+
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                //Save file content goes here
+                fName = file.FileName;
+                if (file != null && file.ContentLength > 0)
+                {
+                    MemoryStream target = new MemoryStream();
+                    file.InputStream.CopyTo(target);
+
+                    Picture tmp = new Picture()
+                    {
+                        pictureId = Guid.NewGuid(),
+                        image = target.ToArray(),
+                        animalId = animalId
+                    };
+                    using (Service1Client dalService = new Service1Client())
+                    {
+                        dalService.UploadImage(tmp);
+                        // TODO: attach image loacation to animal pictureName
+                    }
+
+                    //var originalDirectory = new System.IO.DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
+                    //string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
+                    //var fileName1 = System.IO.Path.GetFileName(file.FileName);
+                    //bool isExists = System.IO.Directory.Exists(pathString);
+                    //if (!isExists)
+                    //    System.IO.Directory.CreateDirectory(pathString);
+                    //var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                    //file.SaveAs(path);
+                }
+
+            }
+            return Index();
         }
     }
 }

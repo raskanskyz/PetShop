@@ -315,5 +315,14 @@ namespace PetShopDAL
                 context.SaveChanges();
             }
         }
+
+        public void UploadImage(Picture picture)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                context.Pictures.Add(picture);
+                context.SaveChanges();
+            }
+        }
     }
 }

@@ -123,6 +123,12 @@
   <wsdl:message name="IService1_DeleteComment_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCommentResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_UploadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UploadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadImageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetCommentsList">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCommentsList" message="tns:IService1_GetCommentsList_InputMessage" />
@@ -199,6 +205,10 @@
     <wsdl:operation name="DeleteComment">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteComment" message="tns:IService1_DeleteComment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteCommentResponse" message="tns:IService1_DeleteComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UploadImage" message="tns:IService1_UploadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UploadImageResponse" message="tns:IService1_UploadImage_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -367,6 +377,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteComment">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteComment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <soap:operation soapAction="http://tempuri.org/IService1/UploadImage" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

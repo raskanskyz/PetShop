@@ -69,5 +69,9 @@ namespace PetShopService
 
         [OperationContract]
         void DeleteComment(Comment comment);
+
+        [OperationContract]
+        void UploadImage(Picture picture);
+
     }
 }

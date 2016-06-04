@@ -1,17 +1,42 @@
 ﻿@model IEnumerable<PetShopMVC.Models.CommentViewModel>
 
-<table class="table table-bordered table-striped table-responsive table-condensed">
+<table id="commentsTable" class="table table-bordered table-striped table-responsive table-condensed">
     <thead>
         <tr>
             <th><strong>comments</strong></th>
+            @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] == true)
+            {
+                <th><strong>delete comment</strong></th>
+            }
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Comment1</td>
+                <td class="description">@item.Comment1</td>
+                @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] == true)
+                {
+                    <td>
+                        @using (Ajax.BeginForm("DeleteComment", "Catalog", new AjaxOptions()
+                        {
+                            HttpMethod = "Post",
+                            UpdateTargetId = "commentsTable",
+                            InsertionMode = InsertionMode.Replace,
+                            OnComplete = "LoadDataTables"
+                        })
+            )
+                        {
+                            @Html.Hidden("CommentId", item.CommentId);
+                            @Html.Hidden("AnimalId", item.AnimalId);
+                            @Html.Hidden("Comment1", item.Comment1);
+
+                            <input type="submit" class="btn btn-danger" value="delete comment" />
+                        }
+                    </td>
+                }
             </tr>
+
         }
     </tbody>
 </table>

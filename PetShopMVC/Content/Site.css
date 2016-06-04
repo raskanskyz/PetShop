@@ -1,4 +1,8 @@
 ﻿body {
+    background-image: url('App Images/bg2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -23,11 +27,23 @@ textarea {
     max-width: 280px;
 }
 
-td > img{
+td > img {
     height: 200px;
     width: 200px;
 }
 
-.description{
-    width: 60%;
+    .description {
+        width: 60%;
+        text-align: justify;
+    }
+
+td {
+    text-align: center;
+    background-color: rgba(249, 249, 249, .5);
+    font-size: 1.4em;
+}
+
+.jumbotron{
+        background-color: rgba(249, 249, 249, .5);
+        text-align: center;
 }

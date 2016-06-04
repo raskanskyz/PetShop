@@ -66,5 +66,8 @@ namespace PetShopService
 
         [OperationContract]
         string GetCategoryNameById(int id);
+
+        [OperationContract]
+        void DeleteComment(Comment comment);
     }
 }

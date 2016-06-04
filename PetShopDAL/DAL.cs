@@ -271,7 +271,9 @@ namespace PetShopDAL
         {
             using (PetShopEntities context = new PetShopEntities())
             {
+                var commentList = context.Comments.Where(x => x.AnimalId == animalId).ToList();
                 Animal entity = context.Animals.Where(x => x.AnimalId == animalId).FirstOrDefault();
+                context.Comments.RemoveRange(commentList);
                 context.Animals.Remove(entity);//consider implementing single access to DB
                 context.SaveChanges();
             }
@@ -301,6 +303,16 @@ namespace PetShopDAL
             using (PetShopEntities context = new PetShopEntities())
             {
                 return context.Categories.Where(c => c.CategoryId == id).Select(n => n.Name).FirstOrDefault();
+            }
+        }
+
+        public void DeleteComment(Comment comment)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                var entity = context.Comments.Where(x => x.CommentId == comment.CommentId).SingleOrDefault();
+                context.Comments.Remove(entity);
+                context.SaveChanges();
             }
         }
     }

@@ -458,6 +458,9 @@ namespace PetShopMVC.PetShopDALService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCategoryNameById", ReplyAction="http://tempuri.org/IService1/GetCategoryNameByIdResponse")]
         string GetCategoryNameById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteComment", ReplyAction="http://tempuri.org/IService1/DeleteCommentResponse")]
+        void DeleteComment(PetShopMVC.PetShopDALService.Comment comment);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -557,6 +560,10 @@ namespace PetShopMVC.PetShopDALService {
         
         public string GetCategoryNameById(int id) {
             return base.Channel.GetCategoryNameById(id);
+        }
+        
+        public void DeleteComment(PetShopMVC.PetShopDALService.Comment comment) {
+            base.Channel.DeleteComment(comment);
         }
     }
 }

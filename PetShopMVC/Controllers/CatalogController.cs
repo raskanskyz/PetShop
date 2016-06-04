@@ -93,7 +93,17 @@ namespace PetShopMVC.Controllers
                     viewModels.Add(Mapper.Map<Comment, CommentViewModel>(entity));
                 }
             }
+            ModelState.Clear();//used to clear entity state so comments can get updated values. alternative is using explicit hiddent input instead of @Html.Hidden
             return PartialView("CommentsListPartial", viewModels);
+        }
+        [HttpPost]
+        public ActionResult DeleteComment(Comment comment)
+        {
+            using (Service1Client dalService = new Service1Client())
+            {
+                dalService.DeleteComment(comment);
+            }
+            return ViewComments(comment.AnimalId);
         }
 
         public ActionResult Categories()
@@ -156,9 +166,26 @@ namespace PetShopMVC.Controllers
         public void AddAnimal(AnimalViewModel model)
         {
             Animal entity = Mapper.Map<AnimalViewModel, Animal>(model);
+            string categoryName = string.Empty;
+
+            //TODO: not modular
+            switch (entity.CategoryId)
+            {
+                case 1:
+                    categoryName = "Mamal";
+                    break;
+                case 2:
+                    categoryName = "Reptile";
+                    break;
+                case 3:
+                    categoryName = "Aquatic";
+                    break;
+                default:
+                    break;
+            }
             using (Service1Client dalService = new Service1Client())
             {
-                dalService.InsertAnimal(entity.Name, entity.Age, entity.PictureName, entity.Description, entity.Category.Name);
+                dalService.InsertAnimal(entity.Name, entity.Age, entity.PictureName, entity.Description, categoryName);
             }
         }
 

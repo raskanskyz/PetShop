@@ -106,4 +106,5 @@ $("#editAnimalSubmit").on("click", function () {
 
 function LoadDataTables() {
     $("#petShopTable").DataTable();
+    $("#commentsTable").DataTable();
 }

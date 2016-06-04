@@ -7,8 +7,7 @@
     <h2>@(Model.Name)'s Details</h2>
 
     <div>
-        <hr />
-        <table class="table table-bordered table-striped table-responsive table-condensed">
+        <table id="petShopTable" class="table table-bordered table-responsive table-condensed">
             <thead>
                 <tr>
                     <th width="30%"><strong>picture</strong></th>
@@ -18,7 +17,7 @@
             <tbody>
                 <tr>
                     <td><img src="@Model.PictureName" class="img-responsive" /></td>
-                    <td>
+                    <td class="description">
                         @Html.LabelFor(x => x.Name):
                         @Html.Label(Model.Name)
                         <br />

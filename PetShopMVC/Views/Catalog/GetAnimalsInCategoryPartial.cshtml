@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<PetShopMVC.Models.AnimalViewModel>
 
-<table id="petShopTable" class="table table-bordered table-striped table-responsive table-condensed">
+<table id="petShopTable" class="table compact table-bordered table-responsive table-condensed">
     <thead>
         <tr>
             <th><strong>portrait</strong></th>
@@ -27,9 +27,7 @@
                 @if (Session["IsAdmin"] != null && (bool)Session["IsAdmin"] == true)
                 {
                     <td>
-                        @*<input type="button" class="btn btn-primary animal-details" value="edit @item.Name's details" name="@item.AnimalId" />*@
                         <button id="@item.AnimalId" class="btn btn-primary edit-animal" data-toggle="modal" data-target="#editAnimalModal">edit @item.Name's details</button>
-                        @*@Html.ActionLink("edit " + item.Name + "'s details", "AnimalDetails", "Catalog", new { animalId = item.AnimalId }, new { @class = "btn btn-primary" })*@
                     </td>
                     <td>
                         @Ajax.ActionLink("delete " + item.Name, "DeleteAnimal", "Catalog", new { animalId = item.AnimalId }, new AjaxOptions()

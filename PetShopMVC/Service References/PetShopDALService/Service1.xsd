@@ -49,12 +49,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
-  <xs:complexType name="Picture">
+  <xs:complexType name="Image">
     <xs:sequence>
       <xs:element minOccurs="0" name="animalId" type="ser:guid" />
-      <xs:element minOccurs="0" name="image" nillable="true" type="xs:base64Binary" />
-      <xs:element minOccurs="0" name="pictureId" type="ser:guid" />
+      <xs:element minOccurs="0" name="image1" nillable="true" type="xs:base64Binary" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Picture" nillable="true" type="tns:Picture" />
+  <xs:element name="Image" nillable="true" type="tns:Image" />
 </xs:schema>

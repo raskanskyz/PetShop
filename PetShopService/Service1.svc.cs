@@ -126,10 +126,10 @@ namespace PetShopService
             dal.DeleteComment(comment);
         }
 
-        public void UploadImage(Picture picture)
+        public void UploadImage(Image image)
         {
             DAL dal = new DAL();
-            dal.UploadImage(picture);
+            dal.UploadImage(image);
         }
     }
 }

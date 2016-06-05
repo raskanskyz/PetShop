@@ -12,7 +12,6 @@ $("#addAnimalSubmit").on("click", function () {
         "CategoryId": $("#Category option:selected").val()
     };
     var model = formInfo.serialize() + '&' + $.param(catObject);
-    alert(model);
     $.ajax({
         url: $("#AddNewAnimal").val(),
         type: 'post',

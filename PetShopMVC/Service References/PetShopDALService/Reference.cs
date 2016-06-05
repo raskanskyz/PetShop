@@ -403,9 +403,9 @@ namespace PetShopMVC.PetShopDALService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Picture", Namespace="http://schemas.datacontract.org/2004/07/PetShopDAL")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Image", Namespace="http://schemas.datacontract.org/2004/07/PetShopDAL")]
     [System.SerializableAttribute()]
-    public partial class Picture : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Image : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -414,10 +414,7 @@ namespace PetShopMVC.PetShopDALService {
         private System.Guid animalIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] imageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid pictureIdField;
+        private byte[] image1Field;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -443,27 +440,14 @@ namespace PetShopMVC.PetShopDALService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] image {
+        public byte[] image1 {
             get {
-                return this.imageField;
+                return this.image1Field;
             }
             set {
-                if ((object.ReferenceEquals(this.imageField, value) != true)) {
-                    this.imageField = value;
-                    this.RaisePropertyChanged("image");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid pictureId {
-            get {
-                return this.pictureIdField;
-            }
-            set {
-                if ((this.pictureIdField.Equals(value) != true)) {
-                    this.pictureIdField = value;
-                    this.RaisePropertyChanged("pictureId");
+                if ((object.ReferenceEquals(this.image1Field, value) != true)) {
+                    this.image1Field = value;
+                    this.RaisePropertyChanged("image1");
                 }
             }
         }
@@ -540,7 +524,7 @@ namespace PetShopMVC.PetShopDALService {
         void DeleteComment(PetShopMVC.PetShopDALService.Comment comment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UploadImage", ReplyAction="http://tempuri.org/IService1/UploadImageResponse")]
-        void UploadImage(PetShopMVC.PetShopDALService.Picture picture);
+        void UploadImage(PetShopMVC.PetShopDALService.Image image);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -646,8 +630,8 @@ namespace PetShopMVC.PetShopDALService {
             base.Channel.DeleteComment(comment);
         }
         
-        public void UploadImage(PetShopMVC.PetShopDALService.Picture picture) {
-            base.Channel.UploadImage(picture);
+        public void UploadImage(PetShopMVC.PetShopDALService.Image image) {
+            base.Channel.UploadImage(image);
         }
     }
 }

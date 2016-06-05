@@ -237,42 +237,52 @@ namespace PetShopMVC.Controllers
 
         public ActionResult UploadImage(Guid animalId)
         {
-
-            //bool isSavedSuccessfully = true;
-            string fName = "";
-
             foreach (string fileName in Request.Files)
             {
                 HttpPostedFileBase file = Request.Files[fileName];
-                //Save file content goes here
-                fName = file.FileName;
-                if (file != null && file.ContentLength > 0)
+                MemoryStream stream = new MemoryStream();
+                file.InputStream.CopyTo(stream);
+                Image entity = new Image()
                 {
-                    MemoryStream target = new MemoryStream();
-                    file.InputStream.CopyTo(target);
+                    animalId = animalId,
+                    image1 = stream.ToArray()
+                };
+                using (Service1Client dalService = new Service1Client())
+                {
 
-                    Picture tmp = new Picture()
-                    {
-                        pictureId = Guid.NewGuid(),
-                        image = target.ToArray(),
-                        animalId = animalId
-                    };
-                    using (Service1Client dalService = new Service1Client())
-                    {
-                        dalService.UploadImage(tmp);
-                        // TODO: attach image loacation to animal pictureName
-                    }
-
-                    //var originalDirectory = new System.IO.DirectoryInfo(string.Format("{0}Images\\WallImages", Server.MapPath(@"\")));
-                    //string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "imagepath");
-                    //var fileName1 = System.IO.Path.GetFileName(file.FileName);
-                    //bool isExists = System.IO.Directory.Exists(pathString);
-                    //if (!isExists)
-                    //    System.IO.Directory.CreateDirectory(pathString);
-                    //var path = string.Format("{0}\\{1}", pathString, file.FileName);
-                    //file.SaveAs(path);
+                    dalService.UploadImage(entity);
                 }
 
+                ////bool isSavedSuccessfully = true;
+                //string fName = "";
+
+                //foreach (string fileName in Request.Files)
+                //{
+                //    HttpPostedFileBase file = Request.Files[fileName];
+                //    //Save file content goes here
+                //    fName = file.FileName;
+                //    var pathString = new DirectoryInfo(string.Format("{0}Images\\AnimalProfilePics", Server.MapPath(@"\")));
+                //    var fileName1 = Path.GetFileName(file.FileName);
+                //    bool isExists = Directory.Exists(pathString.ToString());
+                //    if (!isExists)
+                //    {
+                //        Directory.CreateDirectory(pathString.ToString());
+                //    }
+
+                //    var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                //    if (file != null && file.ContentLength > 0)
+                //    {
+
+                //        using (Service1Client dalService = new Service1Client())
+                //        {
+                //            var entity = dalService.GetAnimalById(animalId);
+                //            entity.PictureName = path;
+                //            dalService.UpdateAnimal(animalId, entity.Name, entity.Age, path, entity.Description);
+                //        }
+                //        file.SaveAs(path);//TODO: need try catch before saving img
+                //    }
+
+                //}
             }
             return Index();
         }

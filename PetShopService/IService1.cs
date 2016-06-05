@@ -71,7 +71,6 @@ namespace PetShopService
         void DeleteComment(Comment comment);
 
         [OperationContract]
-        void UploadImage(Picture picture);
-
+        void UploadImage(Image image);
     }
 }

@@ -332,7 +332,39 @@ namespace PetShopDAL
                     context.Images.Add(image);
                     context.SaveChanges();
                 }
-                
+
+            }
+        }
+
+        public void DeleteImage(Image image)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                var entity = context.Images.Find(image);
+                context.Images.Remove(entity);
+                context.SaveChanges();
+            }
+        }
+
+        public Image GetImage(Guid animalId)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                return context.Images.Where(x => x.animalId == animalId).FirstOrDefault();
+            }
+        }
+
+        public void UpdateImage(Image updatedImage)
+        {
+            using (PetShopEntities context = new PetShopEntities())
+            {
+                var original = context.Images.Find(updatedImage);
+                if (original != null)
+                {
+                    original.animalId = updatedImage.animalId;
+                    original.image1 = updatedImage.image1;
+                    context.SaveChanges();
+                }
             }
         }
     }

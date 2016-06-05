@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -235,8 +236,9 @@ namespace PetShopMVC.Controllers
             ViewBag.CategoriesSelectList = items;
         }
 
-        public ActionResult UploadImage(Guid animalId)
+        public RedirectResult UploadImage(Guid animalId)
         {
+            var link = GetImage(animalId);
             foreach (string fileName in Request.Files)
             {
                 HttpPostedFileBase file = Request.Files[fileName];
@@ -250,7 +252,7 @@ namespace PetShopMVC.Controllers
                 using (Service1Client dalService = new Service1Client())
                 {
 
-                    dalService.UploadImage(entity);
+                    //dalService.UploadImage(entity);
                 }
 
                 ////bool isSavedSuccessfully = true;
@@ -284,7 +286,23 @@ namespace PetShopMVC.Controllers
 
                 //}
             }
-            return Index();
+            return Redirect("");
+        }
+
+        public RedirectResult GetImage(Guid animalId)
+        {
+            //call api
+            //need to make web call to api?
+            /*HttpWebRequest recomended?*/
+            HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(string.Format("http://localhost:61120/api/Images/" + animalId.ToString()));
+            webReq.Method = "GET";
+            HttpWebResponse webResponse = (HttpWebResponse)webReq.GetResponse();
+
+            //I don't use the response for anything right now. But I might log the response answer later on.   
+            Stream answer = webResponse.GetResponseStream();
+            StreamReader _recivedAnswer = new StreamReader(answer);
+
+            return Redirect(_recivedAnswer.ToString());
         }
     }
 }

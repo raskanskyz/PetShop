@@ -10,13 +10,14 @@
 namespace PetShopDAL
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class Comment
     {
         public int CommentId { get; set; }
-        public Guid AnimalId { get; set; }
+        public System.Guid AnimalId { get; set; }
         public string Comment1 { get; set; }
-
-        public Animal Animal { get; set; }
+    
+        public  Animal Animal { get; set; }
     }
 }

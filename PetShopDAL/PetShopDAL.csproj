@@ -60,6 +60,9 @@
     <Compile Include="Comment.cs">
       <DependentUpon>PetShopModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>PetShopModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="IPetShopDAL.cs" />
     <Compile Include="DAL.cs" />
     <Compile Include="PetShopModel.Context.cs">
@@ -76,9 +79,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PetShopModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Picture.cs">
-      <DependentUpon>PetShopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />

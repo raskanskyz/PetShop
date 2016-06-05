@@ -316,12 +316,23 @@ namespace PetShopDAL
             }
         }
 
-        public void UploadImage(Picture picture)
+        public void UploadImage(Image image)
         {
             using (PetShopEntities context = new PetShopEntities())
             {
-                context.Pictures.Add(picture);
-                context.SaveChanges();
+                if (context.Images.Where(img => img.animalId == image.animalId).Count() > 0)
+                {
+                    var original = context.Images.Find(image);
+                    original.animalId = image.animalId;
+                    original.image1 = image.image1;
+                    context.SaveChanges();
+                }
+                else
+                {
+                    context.Images.Add(image);
+                    context.SaveChanges();
+                }
+                
             }
         }
     }

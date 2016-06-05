@@ -12,10 +12,9 @@ namespace PetShopDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Picture
+    public partial class Image
     {
-        public System.Guid pictureId { get; set; }
-        public byte[] image { get; set; }
         public System.Guid animalId { get; set; }
+        public byte[] image1 { get; set; }
     }
 }

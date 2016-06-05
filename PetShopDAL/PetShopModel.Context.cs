@@ -28,6 +28,6 @@ namespace PetShopDAL
         public virtual DbSet<Animal> Animals { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
-        public virtual DbSet<Picture> Pictures { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
     }
 }

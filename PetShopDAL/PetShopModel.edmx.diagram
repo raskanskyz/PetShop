@@ -8,9 +8,14 @@
         <EntityTypeShape EntityType="PetShopModel.Animal" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PetShopModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PetShopModel.Comment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <AssociationConnector Association="PetShopModel.FK_Animals_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="PetShopModel.FK_Animals_Categories" ManuallyRouted="true" >
+          <ConnectorPoint PointX="2.25" PointY="2.297841796875" />
+          <ConnectorPoint PointX="2.625" PointY="2.297841796875" />
+          <ConnectorPoint PointX="2.625" PointY="2.297841796875" />
+          <ConnectorPoint PointX="3" PointY="2.297841796875" />
+        </AssociationConnector>
         <AssociationConnector Association="PetShopModel.FK_Comments_Animals" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="PetShopModel.Picture" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PetShopModel.Image" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
